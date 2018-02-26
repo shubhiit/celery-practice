@@ -55,10 +55,12 @@ class LoginFormView(View):
         user = authenticate(username=username, password=password)
 
         if user is not None:
+            print (3)
             send_email_interval.delay(3)
             login(request, user)
             return redirect('blog:index')
 
+        print(3)
         return render(request, 'blog/login.html', {'form': form})
 
 def signup(request):
